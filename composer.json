@@ -1,0 +1,58 @@
+{
+  "name": "mguinea/php-ddd-microservice-example",
+  "type": "project",
+  "description": "Lumen PHP Microservice example using DDD, Hexagonal and best practices",
+  "keywords": [
+    "example",
+    "lumen",
+    "ddd",
+    "hexagonal",
+    "cqrs",
+    "solid"
+  ],
+  "homepage": "https://github.com/mguinea/php-ddd-microservice-example",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marc Guinea",
+      "email": "develop.marcguinea@gmail.com",
+      "homepage": "https://marcguinea.com"
+    }
+  ],
+  "require": {
+    "laravel/lumen-framework": "^8.0",
+    "php": "^8.0",
+    "symfony/messenger": "^5.0"
+  },
+  "require-dev": {
+    "fakerphp/faker": "^1.9",
+    "phpunit/phpunit": "^9.0"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "dont-discover": []
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ]
+  }
+}
