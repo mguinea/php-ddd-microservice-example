@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  php-ddd-microservice-example.db:
+    image: mysql:5.7
+    container_name: php-ddd-microservice-example.db
+    restart: unless-stopped
+    tty: true
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    env_file:
+      - .env
+    volumes:
+      - php-ddd-microservice-example-dbdata:/var/lib/mysql/
+      - ./etc/config/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - php-ddd-microservice-example
+
+  php-ddd-microservice-example.app:
+    build:
+      context: .
+      dockerfile: ./etc/docker/php.Dockerfile
+    container_name: php-ddd-microservice-example.app
+    restart: unless-stopped
+    tty: true
+    ports:
+      - ${APP_PORT}:8080
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./etc/config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    env_file:
+      - .env
+    depends_on:
+      - php-ddd-microservice-example.db
+    command: php -S php-ddd-microservice-example.app:8080 -t apps/auth-api/public
+    networks:
+      - php-ddd-microservice-example
+
+networks:
+  php-ddd-microservice-example:
+    driver: bridge
+
+volumes:
+  php-ddd-microservice-example-dbdata:
+    driver: local
