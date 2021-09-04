@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\User\Lumen;
 
 use App\Application\User\Create\CreateUserCommandHandler;
+use App\Application\User\Delete\DeleteUserCommandHandler;
 use App\Application\User\Get\GetUserByIdQueryHandler;
 use App\Domain\User\UserRepository;
 use App\Infrastructure\User\Persistence\Eloquent\EloquentUserRepository;
@@ -25,7 +26,10 @@ final class UserServiceProvider extends ServiceProvider
         );
 
         $this->app->tag(
-            CreateUserCommandHandler::class,
+            [
+                CreateUserCommandHandler::class,
+                DeleteUserCommandHandler::class,
+            ],
             'command_handler'
         );
 

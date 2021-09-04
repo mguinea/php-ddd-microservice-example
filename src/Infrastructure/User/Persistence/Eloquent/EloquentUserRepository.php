@@ -14,6 +14,12 @@ final class EloquentUserRepository implements UserRepository
     {
     }
 
+    public function deleteById(UserId $id): void
+    {
+        $eloquentUser = $this->model->find($id->value());
+        $eloquentUser->delete();
+    }
+
     public function findById(UserId $id): ?User
     {
         $eloquentUser = $this->model->find($id->value());

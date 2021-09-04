@@ -10,6 +10,7 @@ $router->group(
         'prefix' => 'auth/api/v1/users'
     ],
     function (Router $router) {
-        $router->post('/', ['as' => 'create', 'uses' => 'CreateUserController']);
+        $router->post('/', ['as' => 'create_user', 'uses' => 'CreateUserController']);
+        $router->delete('/{id}', ['as' => 'delete_user', 'uses' => 'DeleteUserController']);
     }
 );
