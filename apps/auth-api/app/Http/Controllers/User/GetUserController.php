@@ -29,7 +29,7 @@ final class GetUserController extends Controller
 
         return new JsonResponse(
             $userResponse->toArray(),
-            Response::OK
+            Response::HTTP_OK
         );
     }
 }
