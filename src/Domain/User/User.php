@@ -25,6 +25,12 @@ final class User
         );
     }
 
+    public function update(UserEmail $email, UserPassword $password): void
+    {
+        $this->email = $email;
+        $this->password = $password;
+    }
+
     public static function fromPrimitives(string $id, string $email, string $password): self
     {
         return new self(

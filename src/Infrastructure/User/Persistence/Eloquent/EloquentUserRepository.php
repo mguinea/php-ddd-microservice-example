@@ -37,7 +37,12 @@ final class EloquentUserRepository implements UserRepository
 
     public function save(User $user): void
     {
-        $eloquentUser = new EloquentUser();
+        $eloquentUser = $this->model->find($user->id()->value());
+
+        if (null === $eloquentUser) {
+            $eloquentUser = new EloquentUser();
+        }
+
         $eloquentUser->id = $user->id()->value();
         $eloquentUser->email = $user->email()->value();
         $eloquentUser->password = $user->password()->value();

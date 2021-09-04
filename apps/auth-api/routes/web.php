@@ -11,6 +11,7 @@ $router->group(
     ],
     function (Router $router) {
         $router->post('/', ['as' => 'create_user', 'uses' => 'CreateUserController']);
+        $router->put('/{id}', ['as' => 'update_user', 'uses' => 'UpdateUserController']);
         $router->get('/{id}', ['as' => 'get_user', 'uses' => 'GetUserController']);
         $router->delete('/{id}', ['as' => 'delete_user', 'uses' => 'DeleteUserController']);
     }
