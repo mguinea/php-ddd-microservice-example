@@ -25,10 +25,10 @@ final class User
         );
     }
 
-    public function update(UserEmail $email, UserPassword $password): void
+    public function update(?UserEmail $email = null, ?UserPassword $password = null): void
     {
-        $this->email = $email;
-        $this->password = $password;
+        $this->email = null === $email ? $this->email : $email;
+        $this->password = null === $password ? $this->password : $password;
     }
 
     public static function fromPrimitives(string $id, string $email, string $password): self

@@ -16,7 +16,7 @@ final class UpdateUser
     {
     }
 
-    public function __invoke(UserId $id, UserEmail $email, UserPassword $password): void
+    public function __invoke(UserId $id, ?UserEmail $email = null, ?UserPassword $password = null): void
     {
         $user = $this->repository->findById($id);
 

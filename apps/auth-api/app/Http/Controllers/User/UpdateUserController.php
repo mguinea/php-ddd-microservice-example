@@ -29,8 +29,7 @@ final class UpdateUserController extends Controller
         $this->validator->validate(
             $request,
             [
-                'email' => 'required|email',
-                'password' => 'required'
+                'email' => 'email'
             ]
         );
 

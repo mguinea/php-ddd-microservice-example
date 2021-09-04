@@ -10,8 +10,8 @@ final class UpdateUserCommand implements Command
 {
     public function __construct(
         private string $id,
-        private string $email,
-        private string $password
+        private ?string $email = null,
+        private ?string $password = null
     )
     {
     }
@@ -21,12 +21,12 @@ final class UpdateUserCommand implements Command
         return $this->id;
     }
 
-    public function email(): string
+    public function email(): ?string
     {
         return $this->email;
     }
 
-    public function password(): string
+    public function password(): ?string
     {
         return $this->password;
     }

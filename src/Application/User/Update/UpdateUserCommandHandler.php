@@ -18,8 +18,8 @@ final class UpdateUserCommandHandler implements CommandHandler
     public function __invoke(UpdateUserCommand $command): void
     {
         $id = UserId::fromValue($command->id());
-        $email = UserEmail::fromValue($command->email());
-        $password = UserPassword::fromValue($command->password());
+        $email = null === $command->email() ? null : UserEmail::fromValue($command->email());
+        $password = null === $command->password() ? null : UserPassword::fromValue($command->password());
 
         $this->updateUser->__invoke($id, $email, $password);
     }
