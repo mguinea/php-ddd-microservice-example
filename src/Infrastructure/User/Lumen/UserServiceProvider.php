@@ -8,21 +8,16 @@ use App\Application\User\Create\CreateUserCommandHandler;
 use App\Application\User\Delete\DeleteUserCommandHandler;
 use App\Application\User\Get\GetUserByIdQueryHandler;
 use App\Application\User\Update\UpdateUserCommandHandler;
-use App\Domain\User\UserRepository;
+use App\Domain\User\UserRepositoryInterface;
 use App\Infrastructure\User\Persistence\Eloquent\EloquentUserRepository;
 use Illuminate\Support\ServiceProvider;
 
 final class UserServiceProvider extends ServiceProvider
 {
-    public function boot()
-    {
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
-    }
-
     public function register()
     {
         $this->app->bind(
-            UserRepository::class,
+            UserRepositoryInterface::class,
             EloquentUserRepository::class
         );
 

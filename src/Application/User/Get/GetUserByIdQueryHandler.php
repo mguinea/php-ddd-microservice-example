@@ -6,11 +6,12 @@ namespace App\Application\User\Get;
 
 use App\Application\User\UserResponse;
 use App\Domain\Shared\Bus\Query\QueryHandler;
+use App\Domain\User\UserGetterById;
 use App\Domain\User\UserId;
 
 final class GetUserByIdQueryHandler implements QueryHandler
 {
-    public function __construct(private GetUserById $getUserById)
+    public function __construct(private UserGetterById $getUserById)
     {
     }
 

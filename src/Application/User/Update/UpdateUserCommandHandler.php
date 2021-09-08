@@ -8,10 +8,11 @@ use App\Domain\Shared\Bus\Command\CommandHandler;
 use App\Domain\User\UserEmail;
 use App\Domain\User\UserId;
 use App\Domain\User\UserPassword;
+use App\Domain\User\UserUpdater;
 
 final class UpdateUserCommandHandler implements CommandHandler
 {
-    public function __construct(private UpdateUser $updateUser)
+    public function __construct(private UserUpdater $updateUser)
     {
     }
 

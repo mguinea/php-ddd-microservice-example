@@ -2,10 +2,10 @@
 
 namespace App\Domain\User;
 
-use App\Domain\Shared\DomainException;
+use App\Domain\Shared\AbstractDomainException;
 use Throwable;
 
-final class UserNotFound extends DomainException
+final class UserNotFound extends AbstractDomainException
 {
     public function __construct($message = "", $code = 0, Throwable $previous = null)
     {

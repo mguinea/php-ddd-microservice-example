@@ -6,7 +6,7 @@ namespace App\Domain\Shared;
 
 use Ramsey\Uuid\Uuid as RamseyUuid;
 
-class UuidValueObject extends StringValueObject
+class UuidValueObject extends AbstractStringValueObject
 {
     public static function create()
     {

@@ -9,9 +9,7 @@ final class User
     public function __construct(
         private UserId $id,
         private UserEmail $email,
-        private UserPassword $password,
-        private array $rolesId = [],
-        private array $permissionsId = []
+        private UserPassword $password
     )
     {
     }
@@ -53,15 +51,5 @@ final class User
     public function password(): UserPassword
     {
         return $this->password;
-    }
-
-    public function rolesId(): array
-    {
-        return $this->rolesId;
-    }
-
-    public function permissionsId(): array
-    {
-        return $this->permissionsId;
     }
 }

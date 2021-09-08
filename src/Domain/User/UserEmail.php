@@ -2,9 +2,9 @@
 
 namespace App\Domain\User;
 
-use App\Domain\Shared\StringValueObject;
+use App\Domain\Shared\AbstractStringValueObject;
 
-final class UserEmail extends StringValueObject
+final class UserEmail extends AbstractStringValueObject
 {
     // TODO email validation
 }

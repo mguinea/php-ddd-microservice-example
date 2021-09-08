@@ -6,9 +6,10 @@ namespace App\Infrastructure\User\Persistence\Eloquent;
 
 use App\Domain\User\User;
 use App\Domain\User\UserId;
-use App\Domain\User\UserRepository;
+use App\Domain\User\UserRepositoryInterface;
+use Exception;
 
-final class EloquentUserRepository implements UserRepository
+final class EloquentUserRepository implements UserRepositoryInterface
 {
     public function __construct(private EloquentUser $model)
     {
@@ -16,8 +17,12 @@ final class EloquentUserRepository implements UserRepository
 
     public function deleteById(UserId $id): void
     {
-        $eloquentUser = $this->model->find($id->value());
-        $eloquentUser->delete();
+        try {
+            $eloquentUser = $this->model->find($id->value());
+            $eloquentUser->delete();
+        } catch(Exception $e) {
+            throw new InfrastructureException();
+        }
     }
 
     public function findById(UserId $id): ?User

@@ -1,10 +1,11 @@
 {
   "name": "mguinea/php-ddd-microservice-example",
   "type": "project",
-  "description": "Lumen PHP Microservice example using DDD, Hexagonal and best practices",
+  "description": "PHP Microservice example using DDD, Hexagonal and best practices",
   "keywords": [
     "example",
     "lumen",
+    "symfony",
     "ddd",
     "hexagonal",
     "cqrs",
@@ -42,13 +43,13 @@
   "autoload": {
     "psr-4": {
       "App\\": "src/",
-      "Apps\\AuthApi\\App\\": "apps/auth-api/app/"
+      "Apps\\LumenApi\\App\\": "apps/lumen-api/app/"
     }
   },
   "autoload-dev": {
     "psr-4": {
       "Tests\\": "tests/",
-      "Apps\\AuthApi\\Tests\\": "apps/auth-api/tests/"
+      "Apps\\LumenApi\\Tests\\": "apps/lumen-api/tests/"
     }
   },
   "minimum-stability": "dev",
