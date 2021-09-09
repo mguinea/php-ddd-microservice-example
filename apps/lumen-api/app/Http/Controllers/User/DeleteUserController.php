@@ -20,9 +20,7 @@ final class DeleteUserController extends Controller
     public function __invoke(Request $request, string $id): JsonResponse
     {
         $this->commandBus->dispatch(
-            new DeleteUserCommand(
-                $id
-            )
+            new DeleteUserCommand($id)
         );
 
         return new JsonResponse(

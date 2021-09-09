@@ -54,4 +54,9 @@ final class EloquentUserRepository implements UserRepositoryInterface
 
         $eloquentUser->save();
     }
+
+    public function searchByCriteria(Criteria $criteria): array
+    {
+
+    }
 }

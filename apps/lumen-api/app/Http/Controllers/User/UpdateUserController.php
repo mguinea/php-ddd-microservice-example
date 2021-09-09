@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Apps\LumenApi\App\Http\Controllers\User;
 
-use App\Application\User\Get\GetUserByIdQuery;
 use App\Application\User\Update\UpdateUserCommand;
-use App\Application\User\UserResponse;
 use App\Domain\Shared\Bus\Command\CommandBus;
-use App\Domain\Shared\Bus\Query\QueryBus;
 use App\Domain\Shared\RequestValidator;
 use Apps\LumenApi\App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
@@ -19,7 +16,6 @@ final class UpdateUserController extends Controller
 {
     public function __construct(
         private CommandBus $commandBus,
-        private QueryBus $queryBus,
         private RequestValidator $validator
     ) {
     }
@@ -44,16 +40,13 @@ final class UpdateUserController extends Controller
             )
         );
 
-        /** @var UserResponse $userResponse */
-        $userResponse = $this->queryBus->ask(
-            new GetUserByIdQuery(
-                $id
-            )
-        );
-
         return new JsonResponse(
-            $userResponse->toArray(),
-            Response::HTTP_OK
+            [
+                'data' => [
+                    'message' => 'User update request sent.'
+                ]
+            ],
+            Response::HTTP_ACCEPTED
         );
     }
 }

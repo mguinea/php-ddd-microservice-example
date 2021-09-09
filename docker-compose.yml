@@ -21,11 +21,11 @@ services:
     networks:
       - php-ddd-microservice-example
 
-  php-ddd-microservice-example.app:
+  php-ddd-microservice-example.lumen-api:
     build:
       context: .
       dockerfile: ./etc/docker/php.Dockerfile
-    container_name: php-ddd-microservice-example.app
+    container_name: php-ddd-microservice-example.lumen-api
     restart: unless-stopped
     tty: true
     ports:
@@ -41,7 +41,7 @@ services:
       - .env
     depends_on:
       - php-ddd-microservice-example.db
-    command: php -S php-ddd-microservice-example.app:8080 -t apps/auth-api/public
+    command: php -S php-ddd-microservice-example.lumen-api:8080 -t apps/lumen-api/public
     networks:
       - php-ddd-microservice-example
 

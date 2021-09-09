@@ -10,7 +10,6 @@ use App\Domain\Shared\Bus\Query\QueryBus as QueryBusInterface;
 use App\Domain\Shared\RequestValidator;
 use App\Domain\Shared\UuidGenerator;
 use App\Infrastructure\Shared\Bus\Messenger\MessengerEventBus;
-use App\Infrastructure\Shared\Lumen\LumenRequestValidator;
 use App\Infrastructure\Shared\RamseyUuidGenerator;
 use App\Infrastructure\Shared\Bus\Messenger\MessengerCommandBus;
 use App\Infrastructure\Shared\Bus\Messenger\MessengerQueryBus;

@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
                 $table->uuid('id')->primary()->unique();
                 $table->string('email')->unique();
                 $table->string('password');
-                $table->timestamps();
             }
         );
     }

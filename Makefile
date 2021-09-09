@@ -28,26 +28,26 @@ volumes:
 	@docker volume ls
 
 composer-install:
-	@docker exec -it php-ddd-microservice-example.app composer install
+	@docker exec -it php-ddd-microservice-example.lumen-api composer install
 
 composer-update:
-	@docker exec -it php-ddd-microservice-example.app composer update
+	@docker exec -it php-ddd-microservice-example.lumen-api composer update
 
 composer-dump-autoload:
-	@docker exec -it php-ddd-microservice-example.app composer dump-autoload
+	@docker exec -it php-ddd-microservice-example.lumen-api composer dump-autoload
 
 migrate:
-	@docker exec -it -w /var/www/apps/auth-api php-ddd-microservice-example.app php artisan migrate
+	@docker exec -it -w /var/www/apps/lumen-api php-ddd-microservice-example.lumen-api php artisan migrate
 
 migrate-fresh:
-	@docker exec -it -w /var/www/apps/auth-api php-ddd-microservice-example.app php artisan migrate:fresh
+	@docker exec -it -w /var/www/apps/lumen-api php-ddd-microservice-example.lumen-api php artisan migrate:fresh
 
-bash-app:
-	@docker exec -it -w /var/www/apps/auth-api php-ddd-microservice-example.app bash
+bash-lumen:
+	@docker exec -it -w /var/www/apps/lumen-api php-ddd-microservice-example.lumen-api bash
 
 bash-db:
 	@docker exec -it -w / php-ddd-microservice-example.db bash
 
 .PHONY: tests
 tests:
-	@docker exec -it php-ddd-microservice-example.app vendor/bin/phpunit apps/auth-api/tests --order-by=random --configuration=apps/auth-api/phpunit.xml
+	@docker exec -it php-ddd-microservice-example.lumen-api vendor/bin/phpunit apps/lumen-api/tests --order-by=random --configuration=apps/lumen-api/phpunit.xml

@@ -7,7 +7,7 @@ use Laravel\Lumen\Routing\Router;
 $router->group(
     [
         'namespace' => 'User',
-        'prefix' => 'auth/api/v1/users'
+        'prefix' => 'lumen/api/v1/users'
     ],
     function (Router $router) {
         $router->post('/', ['as' => 'create_user', 'uses' => 'CreateUserController']);
@@ -20,7 +20,7 @@ $router->group(
 $router->group(
     [
         'namespace' => 'User',
-        'prefix' => 'auth/api/v1/roles'
+        'prefix' => 'lumen/api/v1/roles'
     ],
     function (Router $router) {
         $router->post('/', ['as' => 'create_role', 'uses' => 'CreateRoleController']);

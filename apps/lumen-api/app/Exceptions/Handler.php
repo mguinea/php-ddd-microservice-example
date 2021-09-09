@@ -4,6 +4,7 @@ namespace Apps\LumenApi\App\Exceptions;
 
 use App\Auth\User\Domain\AuthenticationException;
 use App\Auth\User\Domain\UserAlreadyRegistered;
+use App\Domain\User\UserNotFound;
 use App\Shared\Domain\NotFoundException;
 use App\Shared\Domain\ValueObject\NotValidValueObjectException;
 use Exception;
@@ -48,11 +49,7 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $e)
     {
-        if ($e instanceof ValidationException && $e->getResponse()) {
-            $errors['errors'] = json_decode($e->getResponse()->getContent(), true);
-        } else {
-            $errors['errors'] = $e->getMessage();
-        }
+        $errors['errors'] = null;
 
         if (true === config('app.debug')) {
             $errors['code'] = $e->getCode();
@@ -66,28 +63,17 @@ class Handler extends ExceptionHandler
 
     private function handleException(Throwable $e, array $errors = []): JsonResponse
     {
-        // TODO missing classes
-        if ($e->getPrevious() instanceof AuthenticationException) {
-            return new JsonResponse($errors, Response::HTTP_UNAUTHORIZED);
+        $errors['errors'] = $e->getPrevious()->getMessage();
+
+        if ($e->getPrevious() instanceof UserNotFound) {
+            return new JsonResponse($errors, Response::HTTP_NOT_FOUND);
         }
 
         if ($e instanceof ValidationException) {
             return new JsonResponse($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        if ($e instanceof NotValidValueObjectException) {
-            return new JsonResponse($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
-
         if ($e instanceof InvalidArgumentException) {
-            return new JsonResponse($errors, Response::HTTP_BAD_REQUEST);
-        }
-
-        if ($e instanceof NotFoundException) {
-            return new JsonResponse($errors, Response::HTTP_NOT_FOUND);
-        }
-
-        if ($e instanceof UserAlreadyRegistered) {
             return new JsonResponse($errors, Response::HTTP_BAD_REQUEST);
         }
 

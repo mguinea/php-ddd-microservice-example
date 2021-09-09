@@ -22,9 +22,7 @@ final class GetUserController extends Controller
     {
         /** @var UserResponse $userResponse */
         $userResponse = $this->queryBus->ask(
-            new GetUserByIdQuery(
-                $id
-            )
+            new GetUserByIdQuery($id)
         );
 
         return new JsonResponse(
