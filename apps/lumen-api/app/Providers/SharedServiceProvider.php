@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Shared\Lumen;
+namespace Apps\LumenApi\App\Providers;
 
 use App\Domain\Shared\Bus\Command\CommandBus as CommandBusInterface;
 use App\Domain\Shared\Bus\Event\EventBus as EventBusInterface;
@@ -10,6 +10,7 @@ use App\Domain\Shared\Bus\Query\QueryBus as QueryBusInterface;
 use App\Domain\Shared\RequestValidator;
 use App\Domain\Shared\UuidGenerator;
 use App\Infrastructure\Shared\Bus\Messenger\MessengerEventBus;
+use App\Infrastructure\Shared\LumenRequestValidator;
 use App\Infrastructure\Shared\RamseyUuidGenerator;
 use App\Infrastructure\Shared\Bus\Messenger\MessengerCommandBus;
 use App\Infrastructure\Shared\Bus\Messenger\MessengerQueryBus;
@@ -20,7 +21,7 @@ final class SharedServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 
     public function register()

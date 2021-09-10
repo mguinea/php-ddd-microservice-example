@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace App\Domain\User;
 
+use App\Domain\Shared\Bus\Event\EventBus;
+
 final class UserDeletor
 {
-    public function __construct(private UserRepositoryInterface $repository)
+    public function __construct(
+        private UserRepositoryInterface $repository,
+        private EventBus $bus
+    )
     {
     }
 
@@ -19,5 +24,6 @@ final class UserDeletor
         }
 
         $this->repository->deleteById($id);
+        $this->bus->publish(...$user->pullDomainEvents());
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Shared\Lumen;
+namespace App\Infrastructure\Shared;
 
 use App\Domain\Shared\RequestValidator;
 use Illuminate\Support\Facades\Validator;

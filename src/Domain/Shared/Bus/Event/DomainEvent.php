@@ -18,7 +18,7 @@ abstract class DomainEvent
         $this->occurredOn = $occurredOn ?: (new DateTimeImmutable('now'))->format("Y-m-d h:i:s");
     }
 
-    abstract public function fromPrimitives(
+    abstract public static function fromPrimitives(
         string $aggregateId,
         array $body,
         string $eventId,

@@ -21,7 +21,7 @@ final class EloquentUserRepository implements UserRepositoryInterface
             $eloquentUser = $this->model->find($id->value());
             $eloquentUser->delete();
         } catch(Exception $e) {
-            throw new InfrastructureException();
+            throw new EloquentException();
         }
     }
 

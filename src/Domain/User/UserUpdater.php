@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace App\Domain\User;
 
+use App\Domain\Shared\Bus\Event\EventBus;
+
 final class UserUpdater
 {
-    public function __construct(private UserRepositoryInterface $repository)
+    public function __construct(
+        private UserRepositoryInterface $repository,
+        private EventBus $bus
+    )
     {
     }
 
@@ -20,5 +25,6 @@ final class UserUpdater
 
         $user->update($email, $password);
         $this->repository->save($user);
+        $this->bus->publish(...$user->pullDomainEvents());
     }
 }

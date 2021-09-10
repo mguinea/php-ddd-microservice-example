@@ -1,5 +1,9 @@
 <?php
 
+use Apps\LumenApi\App\Providers\AppServiceProvider;
+use Apps\LumenApi\App\Providers\SharedServiceProvider;
+use Apps\LumenApi\App\Providers\UserServiceProvider;
+
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
@@ -72,9 +76,9 @@ $app->configure('database');
 |
 */
 
-$app->register(App\Infrastructure\Shared\Lumen\SharedServiceProvider::class);
-$app->register(App\Infrastructure\User\Lumen\UserServiceProvider::class);
-$app->register(Apps\LumenApi\App\Providers\AppServiceProvider::class);
+$app->register(SharedServiceProvider::class);
+$app->register(UserServiceProvider::class);
+$app->register(AppServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

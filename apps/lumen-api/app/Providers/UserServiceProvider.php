@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\User\Lumen;
+namespace Apps\LumenApi\App\Providers;
 
 use App\Application\User\Create\CreateUserCommandHandler;
 use App\Application\User\Delete\DeleteUserCommandHandler;
