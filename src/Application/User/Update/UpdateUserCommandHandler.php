@@ -8,7 +8,7 @@ use App\Domain\Shared\Bus\Command\CommandHandler;
 use App\Domain\User\UserEmail;
 use App\Domain\User\UserId;
 use App\Domain\User\UserPassword;
-use App\Domain\User\UserUpdater;
+use App\Application\User\Update\UserUpdater;
 
 final class UpdateUserCommandHandler implements CommandHandler
 {

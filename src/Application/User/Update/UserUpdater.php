@@ -2,9 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\User;
+namespace App\Application\User\Update;
 
 use App\Domain\Shared\Bus\Event\EventBus;
+use App\Domain\User\UserEmail;
+use App\Domain\User\UserId;
+use App\Domain\User\UserNotFound;
+use App\Domain\User\UserPassword;
+use App\Domain\User\UserRepositoryInterface;
 
 final class UserUpdater
 {

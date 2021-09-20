@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\User;
+namespace App\Application\User\Delete;
 
 use App\Domain\Shared\Bus\Event\EventBus;
+use App\Domain\User\UserId;
+use App\Domain\User\UserNotFound;
+use App\Domain\User\UserRepositoryInterface;
 
 final class UserDeletor
 {

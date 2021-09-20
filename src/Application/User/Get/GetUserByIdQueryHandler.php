@@ -6,7 +6,7 @@ namespace App\Application\User\Get;
 
 use App\Application\User\UserResponse;
 use App\Domain\Shared\Bus\Query\QueryHandler;
-use App\Domain\User\UserGetterById;
+use App\Application\User\Get\UserGetterById;
 use App\Domain\User\UserId;
 
 final class GetUserByIdQueryHandler implements QueryHandler

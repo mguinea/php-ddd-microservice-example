@@ -2,7 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\User;
+namespace App\Application\User\Get;
+
+use App\Domain\User\User;
+use App\Domain\User\UserId;
+use App\Domain\User\UserNotFound;
+use App\Domain\User\UserRepositoryInterface;
 
 final class UserGetterById
 {
