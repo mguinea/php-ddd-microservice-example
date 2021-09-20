@@ -8,11 +8,10 @@ use App\Domain\Shared\Bus\Command\CommandHandler;
 use App\Domain\User\UserEmail;
 use App\Domain\User\UserId;
 use App\Domain\User\UserPassword;
-use App\Application\User\Update\UserUpdater;
 
 final class UpdateUserCommandHandler implements CommandHandler
 {
-    public function __construct(private UserUpdater $updateUser)
+    public function __construct(private UserUpdater $userUpdater)
     {
     }
 
@@ -22,6 +21,6 @@ final class UpdateUserCommandHandler implements CommandHandler
         $email = null === $command->email() ? null : UserEmail::fromValue($command->email());
         $password = null === $command->password() ? null : UserPassword::fromValue($command->password());
 
-        $this->updateUser->__invoke($id, $email, $password);
+        $this->userUpdater->__invoke($id, $email, $password);
     }
 }
