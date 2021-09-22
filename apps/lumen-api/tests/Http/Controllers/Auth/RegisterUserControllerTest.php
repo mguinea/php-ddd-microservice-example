@@ -7,7 +7,7 @@ namespace Apps\LumenApi\Tests\Http\Controllers\Auth;
 use Apps\LumenApi\Tests\TestCase;
 use Illuminate\Http\Response;
 use Laravel\Lumen\Testing\DatabaseTransactions;
-use Tests\Auth\User\Domain\UserBuilder;
+use Tests\Domain\User\UserMother;
 
 final class RegisterUserControllerTest extends TestCase
 {
@@ -17,7 +17,7 @@ final class RegisterUserControllerTest extends TestCase
 
     public function testRegisterUser()
     {
-        $user = (new UserBuilder())->build();
+        $user = UserMother::create();
 
         $payload = [
             'email' => $user->email()->value(),

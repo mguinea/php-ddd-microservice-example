@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - ${APP_PORT}:8080
+      - 8080:8080
     environment:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
@@ -42,6 +42,25 @@ services:
     depends_on:
       - php-ddd-microservice-example.db
     command: php -S php-ddd-microservice-example.lumen-api:8080 -t apps/lumen-api/public
+    networks:
+      - php-ddd-microservice-example
+
+  php-ddd-microservice-example.unit-tests:
+    build:
+      context: .
+      dockerfile: ./etc/docker/php.Dockerfile
+    container_name: php-ddd-microservice-example.unit-tests
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./etc/config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    env_file:
+      - .env
     networks:
       - php-ddd-microservice-example
 

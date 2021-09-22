@@ -48,6 +48,8 @@ bash-lumen:
 bash-db:
 	@docker exec -it -w / php-ddd-microservice-example.db bash
 
+# @docker exec -it php-ddd-microservice-example.lumen-api vendor/bin/phpunit apps/lumen-api/tests --order-by=random --configuration=apps/lumen-api/phpunit.xml
+
 .PHONY: tests
 tests:
-	@docker exec -it php-ddd-microservice-example.lumen-api vendor/bin/phpunit apps/lumen-api/tests --order-by=random --configuration=apps/lumen-api/phpunit.xml
+	@docker exec -it php-ddd-microservice-example.unit-tests vendor/bin/phpunit ./tests --order-by=random --configuration=./phpunit.xml

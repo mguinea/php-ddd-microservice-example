@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Apps\LumenApi\Tests\Http\Controllers\Auth;
 
-use App\Auth\User\Domain\User;
+use App\Domain\User\User;
 use Apps\LumenApi\Tests\TestCase;
 use Illuminate\Http\Response;
 use Laravel\Lumen\Testing\DatabaseTransactions;
-use Tests\Auth\User\Domain\UserBuilder;
-use Tests\Auth\User\Domain\UserPasswordBuilder;
+use Tests\Domain\User\UserMother;
+use Tests\Domain\User\UserPasswordMother;
 
 final class UserLoginControllerTest extends TestCase
 {
@@ -19,7 +19,7 @@ final class UserLoginControllerTest extends TestCase
 
     public function testLogInRegisteredUser(): void
     {
-        $user = (new UserBuilder())->build();
+        $user = UserMother::create();
         $this->registerUser($user);
 
         $payload = [
@@ -50,12 +50,12 @@ final class UserLoginControllerTest extends TestCase
 
     public function testLogInNonRegisteredUser(): void
     {
-        $user = (new UserBuilder())->build();
+        $user = UserMother::create();
         $this->registerUser($user);
 
         $payload = [
             'email' => $user->email()->value(),
-            'password' => ((new UserPasswordBuilder())->build())->value()
+            'password' => UserPasswordMother::create()->value()
         ];
 
         $this->post($this->endpoint, $payload);
