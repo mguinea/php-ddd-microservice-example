@@ -5,6 +5,7 @@ namespace Tests\Application\User\Get;
 use App\Application\User\Get\GetUserByIdQueryHandler;
 use App\Application\User\Get\UserGetterById;
 use App\Application\User\UserResponse;
+use App\Domain\User\UserNotFound;
 use Tests\Domain\User\UserMother;
 use Tests\UserUnitTestCase;
 
@@ -34,5 +35,17 @@ final class GetUserByIdQueryHandlerTest extends UserUnitTestCase
         $userResponse = UserResponse::fromUser($user);
 
         $this->assertAskResponse($userResponse, $query, $this->handler);
+    }
+
+    /** @test */
+    public function itShouldNotGetAUserById(): void
+    {
+        $user = UserMother::create();
+        $query = GetUserByIdQueryMother::create(
+            $user->id()
+        );
+        $this->shouldNotFind($user->id());
+
+        $this->assertAskThrowsException(UserNotFound::class, $query, $this->handler);
     }
 }

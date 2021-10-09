@@ -23,6 +23,11 @@ abstract class UserUnitTestCase extends UnitTestCase
         $this->repositoryProphecy()->findById($id)->willReturn($user);
     }
 
+    protected function shouldNotFind(UserId $id): void
+    {
+        $this->repositoryProphecy()->findById($id)->willReturn(null);
+    }
+
     /**
      * @return object|UserRepositoryInterface
      */
