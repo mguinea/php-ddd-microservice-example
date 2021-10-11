@@ -2,6 +2,8 @@
 
 namespace App\Domain\Role;
 
+use App\Domain\Shared\Criteria\Criteria;
+
 interface RoleRepositoryInterface
 {
     public function deleteById(RoleId $id): void;

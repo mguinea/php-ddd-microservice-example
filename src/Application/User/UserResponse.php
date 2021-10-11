@@ -12,8 +12,7 @@ final class UserResponse implements Response
     public function __construct(
         private string $id,
         private string $email
-    )
-    {
+    ) {
     }
 
     public static function fromUser(User $user): self

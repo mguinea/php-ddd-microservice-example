@@ -12,8 +12,7 @@ final class UpdateUserCommand implements Command
         private string $id,
         private ?string $email = null,
         private ?string $password = null
-    )
-    {
+    ) {
     }
 
     public function id(): string

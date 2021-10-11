@@ -2,6 +2,8 @@
 
 namespace App\Domain\User;
 
+use App\Domain\Shared\Criteria\Criteria;
+
 interface UserRepositoryInterface
 {
     public function deleteById(UserId $id): void;

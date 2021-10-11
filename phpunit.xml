@@ -6,7 +6,6 @@
     beStrictAboutChangesToGlobalState="true"
     beStrictAboutTestsThatDoNotTestAnything="false"
     beStrictAboutTodoAnnotatedTests="true"
-    bootstrap="./tests/bootstrap.php"
     colors="true"
     stopOnError="true"
     stopOnFailure="true"

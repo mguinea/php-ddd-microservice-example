@@ -12,8 +12,7 @@ final class User extends AbstractAggregateRoot
         private UserId $id,
         private UserEmail $email,
         private UserPassword $password
-    )
-    {
+    ) {
     }
 
     public static function create(UserId $id, UserEmail $email, UserPassword $password): self
@@ -36,8 +35,8 @@ final class User extends AbstractAggregateRoot
 
     public function update(?UserEmail $email = null, ?UserPassword $password = null): void
     {
-        $this->email = null === $email ? $this->email : $email;
-        $this->password = null === $password ? $this->password : $password;
+        $this->email = $email ?? $this->email;
+        $this->password = $password ?? $this->password;
 
         $this->record(UserWasUpdated::fromPrimitives(
             $this->id()->value(),

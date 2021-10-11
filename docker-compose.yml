@@ -2,24 +2,24 @@ version: '3'
 
 services:
   php-ddd-microservice-example.db:
-    image: mysql:5.7
     container_name: php-ddd-microservice-example.db
-    restart: unless-stopped
-    tty: true
-    environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
     env_file:
       - .env
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE-example}
+      MYSQL_USER: ${DB_USERNAME-example}
+      MYSQL_PASSWORD: ${DB_PASSWORD-secret}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD-secret}
+      SERVICE_NAME: mysql
+      SERVICE_TAGS: dev
+    image: mysql:5.7
+    networks:
+      - php-ddd-microservice-example
+    restart: unless-stopped
+    tty: true
     volumes:
       - php-ddd-microservice-example-dbdata:/var/lib/mysql/
       - ./etc/config/mysql/my.cnf:/etc/mysql/my.cnf
-    networks:
-      - php-ddd-microservice-example
 
   php-ddd-microservice-example.lumen-api:
     build:
@@ -63,6 +63,17 @@ services:
       - .env
     networks:
       - php-ddd-microservice-example
+
+  php-ddd-microservice-example.shared-rabbitmq:
+    container_name: php-ddd-microservice-example.shared-rabbitmq
+    image: 'rabbitmq:3.7-management'
+    restart: unless-stopped
+    ports:
+      - 5630:5672
+      - ${RABBITMQ_PORT-8090}:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER-example}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS-secret}
 
 networks:
   php-ddd-microservice-example:

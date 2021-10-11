@@ -11,8 +11,7 @@ final class UserWasDeleted extends DomainEvent
         private string $email,
         string $eventId = null,
         string $occurredOn = null
-    )
-    {
+    ) {
         parent::__construct($id, $eventId, $occurredOn);
     }
 

@@ -16,8 +16,7 @@ final class UserUpdater
     public function __construct(
         private UserRepositoryInterface $repository,
         private EventBus $bus
-    )
-    {
+    ) {
     }
 
     public function __invoke(UserId $id, ?UserEmail $email = null, ?UserPassword $password = null): void
