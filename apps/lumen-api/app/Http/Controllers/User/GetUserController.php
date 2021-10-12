@@ -18,6 +18,32 @@ final class GetUserController extends Controller
     {
     }
 
+    /**
+     * @OA\Get(
+     *   tags={"Users"},
+     *   path="/lumen/api/v1/users/{id}",
+     *   summary="Get user",
+     *   description="This can only be done by the logged in user.",
+     *   operationId="getUser",
+     *   @OA\Parameter(
+     *     description="ID of user to return",
+     *     in="path",
+     *     name="id",
+     *     required=true,
+     *     example="9cfa2bef-13d4-4d4f-a6e0-a6fb6e4bdcfe",
+     *     @OA\Schema(
+     *       type="string"
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="successful operation",
+     *     @OA\Schema(ref="#/components/schemas/UserResponse")
+     *   ),
+     *   @OA\Response(response=400, description="Invalid username supplied"),
+     *   @OA\Response(response=404, description="User not found")
+     * )
+     */
     public function __invoke(Request $request, string $id): JsonResponse
     {
         /** @var UserResponse $userResponse */
@@ -27,7 +53,8 @@ final class GetUserController extends Controller
 
         return new JsonResponse(
             $userResponse->toArray(),
-            Response::HTTP_OK
+            Response::HTTP_OK,
+            ['Access-Control-Allow-Origin' => '*']
         );
     }
 }

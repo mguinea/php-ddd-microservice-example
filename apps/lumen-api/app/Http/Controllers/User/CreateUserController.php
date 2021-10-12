@@ -22,6 +22,26 @@ final class CreateUserController extends Controller
     ) {
     }
 
+    /**
+     * @OA\Post(
+     *   tags={"Users"},
+     *   path="/lumen/api/v1/users",
+     *   summary="Create user",
+     *   description="This can only be done by the logged in user.",
+     *   operationId="createUser",
+     *   @OA\RequestBody(
+     *       required=true,
+     *       description="Create user",
+     *       @OA\JsonContent(
+     *          @OA\Property(title="email", format="string")
+     *       )
+     *   ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="Accepted"
+     *   )
+     * )
+     */
     public function __invoke(Request $request): JsonResponse
     {
         $this->validator->validate(
@@ -50,7 +70,7 @@ final class CreateUserController extends Controller
                     'id' => $id
                 ]
             ],
-            Response::HTTP_ACCEPTED
+            Response::HTTP_OK
         );
     }
 }

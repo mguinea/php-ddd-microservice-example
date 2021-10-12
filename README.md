@@ -5,7 +5,7 @@
 <p align="center">
     <a href="https://lumen.laravel.com/"><img src="https://img.shields.io/badge/Lumen-8-FF2D20.svg?style=flat-square&logo=lumen" alt="Lumen 8"/></a>
     <a href="https://symfony.com/"><img src="https://img.shields.io/badge/Symfony-5-000000.svg?style=flat-square&logo=symfony" alt="Symfony 5"/></a>
-    <a href="https://www.php.net/"><img src="https://img.shields.io/badge/PHP-7-777BB4.svg?style=flat-square&logo=php" alt="PHP"/></a>
+    <a href="https://www.php.net/"><img src="https://img.shields.io/badge/PHP-8-777BB4.svg?style=flat-square&logo=php" alt="PHP"/></a>
     <a href="https://www.jetbrains.com/es-es/phpstorm/?ref=steemhunt"><img src="https://img.shields.io/badge/PhpStorm-2021-000000.svg?style=flat-square&logo=phpstorm" alt="PhpStorm"/></a>
     <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/docker-3-2496ED.svg?style=flat-square&logo=docker" alt="Docker"/></a>
     <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/mysql-5.7-4479A1.svg?style=flat-square&logo=mysql" alt="MySql"/></a>
@@ -42,7 +42,7 @@
 - Clone this project: `git clone https://github.com/mguinea/php-ddd-microservice-example php-ddd-microservice-example`
 - Move to the project folder: `cd php-ddd-microservice-example`
 - Create a local environment file `cp .env.example .env`
-- Change (if required) ports and any other environment variables in `.end` file
+- Change (if required) ports and any other environment variables in `.env` file
 
 ### Execution
 

@@ -7,12 +7,29 @@ namespace App\Application\User;
 use App\Domain\Shared\Bus\Query\Response;
 use App\Domain\User\User;
 
+/**
+ * @OA\Schema(@OA\Xml(name="UserResponse"))
+ */
 final class UserResponse implements Response
 {
+    /**
+     * @OA\Property()
+     * @var string
+     */
+    private string $id;
+
+    /**
+     * @OA\Property()
+     * @var string
+     */
+    private string $email;
+
     public function __construct(
-        private string $id,
-        private string $email
+        string $id,
+        string $email
     ) {
+        $this->id = $id;
+        $this->email = $email;
     }
 
     public static function fromUser(User $user): self

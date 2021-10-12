@@ -10,7 +10,7 @@ final class EloquentUser extends Model
     protected $primaryKey = 'id';
     protected $table = 'users';
     public $incrementing = false;
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
         'id',

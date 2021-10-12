@@ -21,15 +21,16 @@
     }
   ],
   "require": {
+    "php": "^8.0",
     "ext-pdo": "*",
     "lambdish/phunctional": "^2.0",
     "laravel/lumen-framework": "^8.0",
-    "php": "^8.0",
     "symfony/messenger": "^5.0"
   },
   "require-dev": {
     "fakerphp/faker": "^1.9",
-    "phpunit/phpunit": "^9.0"
+    "phpunit/phpunit": "^9.0",
+    "zircote/swagger-php": "^3.2"
   },
   "config": {
     "optimize-autoloader": true,
@@ -45,7 +46,8 @@
     "psr-4": {
       "App\\": "src/",
       "Apps\\LumenApi\\App\\": "apps/lumen-api/app/",
-      "Apps\\SymfonyApi\\App\\": "apps/symfony-api/app/"
+      "Apps\\SymfonyApi\\App\\": "apps/symfony-api/app/",
+      "Database\\Seeders\\": "apps/lumen-api/database/seeders/"
     }
   },
   "autoload-dev": {

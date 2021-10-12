@@ -7,6 +7,7 @@ namespace Apps\LumenApi\App\Providers;
 use App\Application\User\Create\CreateUserCommandHandler;
 use App\Application\User\Delete\DeleteUserCommandHandler;
 use App\Application\User\Get\GetUserByIdQueryHandler;
+use App\Application\User\Search\SearchUsersByCriteriaQueryHandler;
 use App\Application\User\Update\UpdateUserCommandHandler;
 use App\Domain\User\UserRepositoryInterface;
 use App\Infrastructure\User\Persistence\Eloquent\EloquentUserRepository;
@@ -31,7 +32,10 @@ final class UserServiceProvider extends ServiceProvider
         );
 
         $this->app->tag(
-            GetUserByIdQueryHandler::class,
+            [
+                GetUserByIdQueryHandler::class,
+                SearchUsersByCriteriaQueryHandler::class
+            ],
             'query_handler'
         );
     }

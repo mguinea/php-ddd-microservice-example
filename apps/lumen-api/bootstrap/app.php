@@ -1,7 +1,6 @@
 <?php
 
 use Apps\LumenApi\App\Providers\AppServiceProvider;
-use Apps\LumenApi\App\Providers\SharedServiceProvider;
 use Apps\LumenApi\App\Providers\UserServiceProvider;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
@@ -76,9 +75,8 @@ $app->configure('database');
 |
 */
 
-$app->register(SharedServiceProvider::class);
-$app->register(UserServiceProvider::class);
 $app->register(AppServiceProvider::class);
+$app->register(UserServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

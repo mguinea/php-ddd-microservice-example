@@ -49,6 +49,14 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $e)
     {
+        $errors['code'] = $e->getCode();
+        $errors['line'] = $e->getLine();
+        $errors['file'] = $e->getFile();
+        $errors['exception'] = (string)$e;
+
+        return new JsonResponse($errors, Response::HTTP_INTERNAL_SERVER_ERROR);
+
+
         $errors['errors'] = null;
 
         if (true === config('app.debug')) {

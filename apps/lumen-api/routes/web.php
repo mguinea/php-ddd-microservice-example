@@ -12,6 +12,7 @@ $router->group(
     function (Router $router) {
         $router->post('/', ['as' => 'create_user', 'uses' => 'CreateUserController']);
         $router->patch('/{id}', ['as' => 'update_user', 'uses' => 'UpdateUserController']);
+        $router->get('/', ['as' => 'search_users', 'uses' => 'SearchUsersController']);
         $router->get('/{id}', ['as' => 'get_user', 'uses' => 'GetUserController']);
         $router->delete('/{id}', ['as' => 'delete_user', 'uses' => 'DeleteUserController']);
     }
@@ -19,12 +20,13 @@ $router->group(
 
 $router->group(
     [
-        'namespace' => 'User',
+        'namespace' => 'Role',
         'prefix' => 'lumen/api/v1/roles'
     ],
     function (Router $router) {
         $router->post('/', ['as' => 'create_role', 'uses' => 'CreateRoleController']);
         $router->patch('/{id}', ['as' => 'update_role', 'uses' => 'UpdateRoleController']);
+        $router->get('/', ['as' => 'search_roles', 'uses' => 'SearchRolesController']);
         $router->get('/{id}', ['as' => 'get_role', 'uses' => 'GetRoleController']);
         $router->delete('/{id}', ['as' => 'delete_role', 'uses' => 'DeleteRoleController']);
     }

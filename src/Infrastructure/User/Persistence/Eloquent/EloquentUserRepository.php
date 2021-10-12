@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\User\Persistence\Eloquent;
 
+use App\Domain\Shared\Criteria\Criteria;
 use App\Domain\User\User;
 use App\Domain\User\UserId;
 use App\Domain\User\UserRepositoryInterface;
@@ -57,6 +58,6 @@ final class EloquentUserRepository implements UserRepositoryInterface
 
     public function searchByCriteria(Criteria $criteria): array
     {
-
+        return [];
     }
 }

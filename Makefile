@@ -42,11 +42,20 @@ migrate:
 migrate-fresh:
 	@docker exec -it -w /var/www/apps/lumen-api php-ddd-microservice-example.lumen-api php artisan migrate:fresh
 
+db-seed:
+	@docker exec -it -w /var/www/apps/lumen-api php-ddd-microservice-example.lumen-api php artisan db:seed
+
 bash-lumen:
 	@docker exec -it -w /var/www/apps/lumen-api php-ddd-microservice-example.lumen-api bash
 
 bash-db:
 	@docker exec -it -w / php-ddd-microservice-example.db bash
+
+swagger:
+	@docker exec -it -w /var/www/ php-ddd-microservice-example.lumen-api vendor/bin/openapi apps/lumen-api --output etc/swagger/openapi.json --format json --bootstrap etc/swagger/constants.php
+
+swagger-help:
+	@docker run -v "$PWD":/var/www/apps/lumen-api -it tico/swagger-php --help
 
 # @docker exec -it php-ddd-microservice-example.lumen-api vendor/bin/phpunit apps/lumen-api/tests --order-by=random --configuration=apps/lumen-api/phpunit.xml
 

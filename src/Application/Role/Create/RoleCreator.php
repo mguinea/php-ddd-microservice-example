@@ -15,8 +15,7 @@ final class RoleCreator
     public function __construct(
         private RoleRepositoryInterface $repository,
         private EventBus $bus
-    )
-    {
+    ) {
     }
 
     public function __invoke(RoleId $id, RoleName $name): void
