@@ -14,8 +14,7 @@ final class UserDeletor
     public function __construct(
         private UserRepositoryInterface $repository,
         private EventBus $bus
-    )
-    {
+    ) {
     }
 
     public function __invoke(UserId $id): void

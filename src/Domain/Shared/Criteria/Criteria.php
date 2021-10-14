@@ -9,8 +9,8 @@ final class Criteria
     public function __construct(
         private array $filters,
         private Order $order,
-        private ?int $offset,
-        private ?int $limit
+        private ?int $limit = null,
+        private ?int $offset = null
     ) {
     }
 
@@ -24,13 +24,13 @@ final class Criteria
         return $this->order;
     }
 
-    public function offset(): ?int
-    {
-        return $this->offset;
-    }
-
     public function limit(): ?int
     {
         return $this->limit;
+    }
+
+    public function offset(): ?int
+    {
+        return $this->offset;
     }
 }

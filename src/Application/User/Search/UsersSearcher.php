@@ -17,6 +17,7 @@ final class UsersSearcher
     public function __invoke(array $filters, Order $order, ?int $limit, ?int $offset): array
     {
         $criteria = new Criteria($filters, $order, $limit, $offset);
-        $users = $this->repository->searchByCriteria($criteria);
+
+        return $this->repository->searchByCriteria($criteria);
     }
 }

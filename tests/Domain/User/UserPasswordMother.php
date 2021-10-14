@@ -11,6 +11,6 @@ final class UserPasswordMother
 {
     public static function create(?string $value = null): UserPassword
     {
-        return new UserPassword($value ?? Factory::create()->password);
+        return new UserPassword($value ?? Factory::create()->password . "Aa19!.");
     }
 }

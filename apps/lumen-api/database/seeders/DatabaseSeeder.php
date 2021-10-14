@@ -24,5 +24,10 @@ class DatabaseSeeder extends Seeder
         );
 
         $this->repository->save($user);
+
+        for($i = 0; $i < 10; ++$i) {
+            $user = UserMother::create();
+            $this->repository->save($user);
+        }
     }
 }

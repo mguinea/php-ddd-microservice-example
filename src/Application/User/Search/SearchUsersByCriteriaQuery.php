@@ -9,7 +9,7 @@ use App\Domain\Shared\Bus\Query\Query;
 final class SearchUsersByCriteriaQuery implements Query
 {
     public function __construct(
-        private array $filters,
+        private string $filters,
         private ?string $orderBy,
         private ?string $order,
         private ?int $limit,
@@ -17,7 +17,7 @@ final class SearchUsersByCriteriaQuery implements Query
     ) {
     }
 
-    public function filters(): array
+    public function filters(): string
     {
         return $this->filters;
     }

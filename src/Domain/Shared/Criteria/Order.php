@@ -12,7 +12,7 @@ final class Order
 
     public static function createDesc(OrderBy $orderBy): Order
     {
-        return new self($orderBy, OrderType::desc());
+        return new self($orderBy, OrderType::fromString(OrderType::DESC));
     }
 
     public static function fromValues(?string $orderBy, ?string $order): Order
@@ -22,7 +22,7 @@ final class Order
 
     public static function none(): Order
     {
-        return new Order(new OrderBy(''), OrderType::none());
+        return new Order(new OrderBy(''), OrderType::fromString(OrderType::NONE));
     }
 
     public function orderBy(): OrderBy
@@ -37,6 +37,6 @@ final class Order
 
     public function isNone(): bool
     {
-        return $this->orderType()->isNone();
+        return $this->orderType()->value() === OrderType::NONE;
     }
 }

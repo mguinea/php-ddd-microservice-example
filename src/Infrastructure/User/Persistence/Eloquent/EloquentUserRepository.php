@@ -58,6 +58,27 @@ final class EloquentUserRepository implements UserRepositoryInterface
 
     public function searchByCriteria(Criteria $criteria): array
     {
-        return [];
+        // TODO create an infrastructure class to convert criteria to eloquent query
+        if (false === $criteria->order()->isNone()) {
+            $order = $criteria->order();
+            $eloquentUsers = $this->model
+                ->orderBy(
+                    $order->orderBy()->value(),
+                    $order->orderType()->value()
+                )
+                ->take($criteria->limit())
+                ->skip($criteria->offset())
+                ->get();
+        } else {
+            $eloquentUsers = $this->model->all();
+        }
+
+        return array_map(function($eloquentUser) {
+            return User::fromPrimitives(
+                $eloquentUser['id'],
+                $eloquentUser['email'],
+                $eloquentUser['password']
+            );
+        }, $eloquentUsers->toArray());
     }
 }

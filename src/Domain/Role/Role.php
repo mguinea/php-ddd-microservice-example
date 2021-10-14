@@ -11,8 +11,7 @@ final class Role extends AbstractAggregateRoot
     public function __construct(
         private RoleId $id,
         private RoleName $name
-    )
-    {
+    ) {
     }
 
     public static function create(RoleId $id, RoleName $name): self
@@ -25,7 +24,7 @@ final class Role extends AbstractAggregateRoot
 
     public function update(?RoleName $name = null): void
     {
-        $this->name = null === $name ? $this->name : $name;
+        $this->name = $name ?? $this->name;
     }
 
     public static function fromPrimitives(string $id, string $name): self

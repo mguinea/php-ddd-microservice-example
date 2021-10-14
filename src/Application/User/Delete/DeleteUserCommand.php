@@ -10,8 +10,7 @@ final class DeleteUserCommand implements Command
 {
     public function __construct(
         private string $id
-    )
-    {
+    ) {
     }
 
     public function id(): string

@@ -28,7 +28,7 @@ final class SearchUsersController extends Controller
         /** @var UsersResponse $usersResponse */
         $usersResponse = $this->queryBus->ask(
             new SearchUsersByCriteriaQuery(
-                (array) $request->input('filters'),
+                $request->input('filters'),
                 null === $orderBy ? null : (string) $orderBy,
                 null === $order ? null: (string) $order,
                 null === $limit ? null : (int) $limit,

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Shared\Criteria;
 
-use App\Domain\Shared\AbstractEnumValueObject;
+use App\Domain\Shared\ValueObject\AbstractEnumValueObject;
 use InvalidArgumentException;
 
 /**

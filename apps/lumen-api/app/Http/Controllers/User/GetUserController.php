@@ -52,7 +52,7 @@ final class GetUserController extends Controller
         );
 
         return new JsonResponse(
-            $userResponse->toArray(),
+            ['user' => $userResponse->toArray()],
             Response::HTTP_OK,
             ['Access-Control-Allow-Origin' => '*']
         );

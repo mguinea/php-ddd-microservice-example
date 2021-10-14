@@ -53,10 +53,8 @@ final class UserResponse implements Response
     public function toArray(): array
     {
         return [
-            'user' => [
-                'id' => $this->id,
-                'email' => $this->email
-            ]
+            'id' => $this->id,
+            'email' => $this->email
         ];
     }
 }

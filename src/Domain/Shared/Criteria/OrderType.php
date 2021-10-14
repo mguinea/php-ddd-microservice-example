@@ -4,27 +4,25 @@ declare(strict_types=1);
 
 namespace App\Domain\Shared\Criteria;
 
-use App\Domain\Shared\AbstractEnumValueObject;
+use App\Domain\Shared\ValueObject\AbstractEnumValueObject;
 use InvalidArgumentException;
 
-/**
- * @method static OrderType asc()
- * @method static OrderType desc()
- * @method static OrderType none()
- */
 final class OrderType extends AbstractEnumValueObject
 {
     public const ASC  = 'asc';
     public const DESC = 'desc';
     public const NONE = 'none';
 
-    public function isNone(): bool
+    protected function ensureIsBetweenAcceptedValues($value): void
     {
-        return $this->equals(self::none());
-    }
+        $allowed = [
+            self::ASC,
+            self::DESC,
+            self::NONE
+        ];
 
-    protected function throwExceptionForInvalidValue($value): void
-    {
-        throw new InvalidArgumentException($value);
+        if (!in_array($value, $allowed, true)) {
+            throw new InvalidArgumentException($value);
+        }
     }
 }
