@@ -20,6 +20,7 @@ final class SearchUsersController extends Controller
 
     public function __invoke(Request $request): JsonResponse
     {
+        $filters = $request->input('filters');
         $orderBy = $request->input('order_by');
         $order = $request->input('order');
         $limit  = $request->input('limit');
@@ -28,7 +29,7 @@ final class SearchUsersController extends Controller
         /** @var UsersResponse $usersResponse */
         $usersResponse = $this->queryBus->ask(
             new SearchUsersByCriteriaQuery(
-                $request->input('filters'),
+                null === $filters ? null : (string) $filters,
                 null === $orderBy ? null : (string) $orderBy,
                 null === $order ? null: (string) $order,
                 null === $limit ? null : (int) $limit,
